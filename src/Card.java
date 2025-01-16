@@ -121,13 +121,11 @@ public class Card{
     //Метод определение победителя среди нескольких игроков
     public static String lottoWinner(Card[] a, int[] b){
         Card ans = a[0];
-        int count = 0;
         boolean flag = false; // пока победителя нет
-        for(int i = 0; i < b.length; i ++){
-            for(int j = 0; j < a.length; j ++){
+        for(int i = 0; i < b.length; i ++){//по каждому числу из массива b
+            for(int j = 0; j < a.length; j ++){//по каждой карточке в массиве a
                 a[j].closeNumber(b[i]);
                 if(a[j].isCardFullClosed()){
-                    count ++;
                     if(!flag){
                         ans = a[j];
                         flag = true;
@@ -138,7 +136,7 @@ public class Card{
         }
 
         if(flag){
-            return "Победитель: "+ ans.printOriginalCard() + " Кол-во закрытых карт: " + count;
+            return "Победитель: "+ ans.printOriginalCard();
         }else{
             return "Победителей не будет";
         }
